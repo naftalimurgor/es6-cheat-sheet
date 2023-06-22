@@ -197,6 +197,61 @@ NB: The `fetch` API is built on promises:
           .then((json) => { console.log(json) });
 ```
 
+### 10. Scope
+Scope determines how variables are accessed. There are 4 types of scopes:
+
+  - #### Global Scope
+    Variables declared outside of a function or any block are said to be Globally scoped.
+  ```javascript global scope
+    const movie = "The Flash"; //declared outside of function & globally scoped
+
+    function showMovie(){
+      console.log(movie); // prints The Flash
+    }
+  ```
+  - #### Block Scope
+    When a variable is declarted inside curly braces {}, it is said to be block scoped. Block scope is enabled by the `let` and `const` keywords since the `var` keyword is globally scoped.
+    
+  ```javascript block scope
+  {
+    let name = "John Doe" //cannot be accessed outisde the curly braces.
+  }  
+  
+  //var keyword
+  {
+    var name = "Jane Doe" //can be accessed outside the curly braces because of the var keyword.
+  }
+  ```
+
+  - #### Function Scope
+    When a variable is declared inside a function, it is not accessible outside the function and is said to be function scoped. Variables declared with `var, let, & const` all have function scope. 
+  
+  ```javascript function scope
+  function thisWeek(){
+    
+    var yesterday = "Wednesday" //function scope
+  
+    let today = "Thursday" //function scope
+
+    const tomorrow = "Friday" //function scope
+  }
+  ```
+
+  - #### Module Scope
+    When code runs in module mode, it is said to be module scoped. A variable declared outside a function remains hidden unless it is exported explicitly. Importing makes a function available to current module, from other modules.
+
+    ```javascript module scope
+    //app.js
+    let _car = "Audi"; //has module scope
+    export function printCar(){
+      return _car;
+    };
+
+    //main.js
+    import {printCar} from './app.js'
+    console.log (printCar()); // Audi
+    ```
+
 ## ES2015 Array Methods
 
 NB: Arrays in JavaScript and most Languages are Zero indexed. Index of the array begins at zero:

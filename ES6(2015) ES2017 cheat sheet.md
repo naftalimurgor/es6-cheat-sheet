@@ -608,7 +608,23 @@ for (var n of fibonacci) {
 }
 
 ```
+### Optional Chaining
+The optional chaining **`?.`** is a safe way to access nested object properties, even if the property doesn’t exist.
 
+```javascript
+const person = {
+  name: 'Naftali',
+  address: {
+    street: '243 Upptown Street',
+    city: 'Nairobi',
+    zipcode: '10122'
+  }
+};
+
+console.log(person.address?.city); // 'Nairobi'
+console.log(person.address?.country); // undefined
+console.log(person.phoneNumber?.home?.number); // undefined
+```
 ***
 
 &copy; <small>2023 | <https://naftalimurgor.com</small>> | <small><a href="https://naftalimurgor.com">Join Newsletter</a></small>

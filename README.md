@@ -8,6 +8,7 @@ The cheatsheet can be viewed [here](https://github.com/naftalimurgor/es6-cheat-s
 
 ## Contributors
 1. [RDistinct](https://github.com/RDistinct) 🚀🚀
+2. [mauricenyanja](https://github.com/RDistinct) 🚀🚀
 
 Let's build an exhaustive precise JavaScript cheetsheet.
 

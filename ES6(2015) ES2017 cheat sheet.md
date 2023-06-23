@@ -561,6 +561,54 @@ Object.defineProperties(destination, Object.getOwnPropertyDescriptors(source));
 console.log(destination); // { name: 'John', age: 30 }
 ```
 
+### Generators
+Generators allows you to define an iterator function.
+The **`gen()`** is a Generator function
+The **`yield`**  keyword is used to pause and resume a generator function.
+
+
+In the example below when each time generator.next() is called, the generator function resumes execution until the next yield statement is encountered.
+```javascript
+function*idMaker () {
+  let id = 0
+  while (true) { yield id++ }
+}
+let gen = idMaker()
+gen.next().value // → 0
+gen.next().value // → 1
+gen.next().value // → 2
+
+```
+Symbol.iterator property
+```javascript
+function*gen() { /*some code */}
+var g = gen();
+
+g[Symbol.iterator]() === g // true
+
+```
+Iterators + For..Of
+```javascript
+let fibonacci = {
+  [Symbol.iterator]() {
+    let pre = 0, cur = 1;
+    return {
+      next() {
+        [pre, cur] = [cur, pre + cur];
+return { done: false, value: cur }
+      }
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate sequence at 1000
+  if (n > 1000) break;
+  console.log(n);
+}
+
+```
+
 ***
 
 &copy; <small>2023 | <https://naftalimurgor.com</small>> | <small><a href="https://naftalimurgor.com">Join Newsletter</a></small>

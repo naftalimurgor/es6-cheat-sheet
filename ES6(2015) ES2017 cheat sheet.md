@@ -625,7 +625,7 @@ const person = {
 console.log(person.address?.city); // 'Nairobi'
 console.log(person.address?.country); // undefined
 console.log(person.phoneNumber?.home?.number); // undefined
-=======
+
 ### Symbol
 They are unique and immutable data types
 A symbol is just a piece of memory in which you can store some data. Each symbol will point to a different memory location.

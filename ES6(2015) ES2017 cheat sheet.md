@@ -608,7 +608,19 @@ for (var n of fibonacci) {
 }
 
 ```
+### Symbol
+They are unique and immutable data types
+A symbol is just a piece of memory in which you can store some data. Each symbol will point to a different memory location.
+**`Symbol()`** constructor are unique and immutable.
 
+```javascript
+let firstName = Symbol('first name'),
+    lastName = Symbol('last name');
+
+console.log(firstName); // Symbol(first name)
+console.log(lastName); // Symbol(last name)
+
+```
 ***
 
 &copy; <small>2023 | <https://naftalimurgor.com</small>> | <small><a href="https://naftalimurgor.com">Join Newsletter</a></small>

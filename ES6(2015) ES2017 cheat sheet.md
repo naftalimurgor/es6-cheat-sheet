@@ -595,7 +595,7 @@ let fibonacci = {
     return {
       next() {
         [pre, cur] = [cur, pre + cur];
-return { done: false, value: cur }
+        return { done: false, value: cur }
       }
     }
   }
@@ -625,6 +625,7 @@ const person = {
 console.log(person.address?.city); // 'Nairobi'
 console.log(person.address?.country); // undefined
 console.log(person.phoneNumber?.home?.number); // undefined
+```
 
 ### Symbol
 They are unique and immutable data types

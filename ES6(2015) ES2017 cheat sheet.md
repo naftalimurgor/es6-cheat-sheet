@@ -1,203 +1,10 @@
+<div style="padding:25px; border: solid orange; border-color: orange;  border-width: 3px 4px 3px 5px; transform: rotat(1deg);">
+
 # **ES6(2015) ES2017 cheat sheet**
 
-## About The Author
+## 1. Variables
 
-Naftali Murgor is a software developer. Starting in late 2016, they have gained experience working for companies like ViewFin Canada and Bitgesell. They have also worked as a game tester and Q.A. correspondent for indie game franchises. Naftali Murgor is passionate about helping other developers get into full stack software development and is excited to share their knowledge with others.
-
-### 1. Arrow Functions
-
-Arrow function expressions provide an alternative to traditional functions using the `=>` syntax.
-
-[Read more about arrow functions from MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
-
-```javascript
-// Basic syntax
-const aFunction = () => {
-  // code to be executed
-};
-
-// A one-liner function with an implicit return
-const add = (a, b) => a + b;
-// This is the same as:
-const add = (a, b) => {
-  return a + b
-}
-
-console.log(add(2 , 6)) // prints 8
-
-// A function with one parameter
-const sayHello = name => console.log(`Hello, ${name}!`);
-console.log(sayHello("Jerry")) // prints Hello, Jerry!
-
-// A function with default parameter
-// Default parameters come last in the parameter list
-const multiplyNumbers = (a, b = 1) => a * b;
-console.log(multiply(10)) // prints 10 
-```
-
-### 2. Template Literals (``)
-
-Template literals provide a powerful way to work with strings using the backticks syntax (``):
-
-```javascript
-const firstName = 'John';
-const lastName = 'Doe';
-
-const fullName = `${firstName} ${lastName}`;
-
-const message = `Hello ${fullName}, welcome to my website!`;
-
-// Embed expressions in strings
-const VAT = `the value added tax is ${100 * 0.16}%`
-console.log(VAT) // prints: the value added tax is 16%
-```
-
-### 3. Destructuring assignment
-
-Destructuring assignment makes it possible to "unpack" values from objects and arrays as individual variables:
-
-```javascript
-// Array destructuring
-const myArray = [1, 2, 3, 4, 5];
-const [first, second, ...rest] = myArray;
-
-// Object destructuring
-const userObj = { name: 'John', age: 30 };
-const { name, age } = userObj;
-// Use name and age as separate variables
-
-// Previously, this would have been:
-const name = userObj.name
-const age = userObj.age
-```
-
-### 4. Spread Operator
-
-The spread operator allows an iterable (array, object ) to be copied over to places where zero or more arguments are expected:
-
-```javascript
-// Array spread operator
-const myArray = [1, 2, 3];
-const newArray = [...myArray, 4, 5];
-
-// Object spread operator
-const userObj = { name: 'John', age: 30 };
-const newUserObj = { ...myObject, occupation: 'Developer' };
-
-console.log(newUserObj) // prints {name: 'John', age: 30, occupation: 'Developer'}
-```
-
-### 5. Rest Parameters
-
-Rest parameters provide a way of allowing a function to accept an indefinite number of arguments:
-
-```javascript
-// sum can take as many arguments
-function sum(...numbers) {
-  return numbers.reduce((acc, curr) => acc + curr, 0);
-}
-console.log(sum(1,3,3,5,5)) // prints 17
-```
-
-### 7. Classes
-
-NB: class syntax is "syntactical sugar" over prototype based inheritance. There are **no classes** in JavaScript:
-
-```javascript
-class Person {
-  constructor(name, occupation) {
-    this.name = name;
-    this.occupation = occupation;
-  }
-  greet() {
-    console.log(`Hello, my name is ${this.name} and I'm a ${this.occupation} .`);
-  }
-}
-const person = new Person('Roseland', 'Full stack developer'); 
-person.greet() // Hello, my name is Roseland and I'm a Full stack developer.
-```
-
-### 8. Modules
-
-ESM modules provide a more flexible way of handling reusability of code:
-
-```javascript
-// person.js
-export class Person {
-  constructor(name) {
-    this.name = name;
-  }
-}
-
-// themes.js
-export LIGHT_THEME = 'LIGHT_THEME'
-export DARK_THEME = 'DARK_THEME'
-
-// app.js
-import { Person } from './person.js';
-import { LIGHT_THEME, DARK_THEME} from './themes'
-
-console.log(LIGHT_THEME) // LIGHT_THEME
-console.log(DARK_THEME) // DARK_THEME
-
-const john = new Person('John');
-```
-
-In HTML page:
-
-```javascript
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-  </body>
-
-<script type="module">
-    import { Person } from './person.js';
-    const john = new Person('John');
-<script/>
-</html>
-```
-
-### 9. Promises
-
-Promises provide a better way of handling asynchronous code over callbacks:
-
-```javascript
-// Create a Promise
-const promise = new Promise((resolve, reject) => {
-  // Do some asynchronous work
-  setTimeout(() => {
-    // If the work is successful, call resolve with the result
-    resolve('Success!');
-    // If the work fails, call reject with an error
-    // reject(new Error('Something went wrong!'));
-  }, 1000);
-});
-
-// Consume the Promise
-promise
-  .then(result => {
-    console.log(result); // 'Success!'
-  })
-  .catch(error => {
-    console.error(error); // 'Something went wrong!'
-  });
-```
-
-NB: The `fetch` API is built on promises:
-
-```javascript
- fetch('https://dummyjson.com/posts')
-          .then((data) => data.json())
-          .then((json) => { console.log(json) });
-```
-
-### 10. Scope
+### 1. Scope
 Scope determines how variables are accessed. There are 4 types of scopes:
 
   - #### Global Scope
@@ -252,11 +59,309 @@ Scope determines how variables are accessed. There are 4 types of scopes:
     console.log (printCar()); // Audi
     ```
 
-## ES2015 Array Methods
+## 2. Strings
+
+### 1. Template Literals (``)
+
+Template literals provide a powerful way to work with strings using the backticks syntax (``):
+
+```javascript
+const firstName = 'John';
+const lastName = 'Doe';
+
+const fullName = `${firstName} ${lastName}`;
+
+const message = `Hello ${fullName}, welcome to my website!`;
+
+// Embed expressions in strings
+const VAT = `the value added tax is ${100 * 0.16}%`
+console.log(VAT) // prints: the value added tax is 16%
+```
+
+
+## ES6 String Methods
+
+ES6(E2015) introduced new methods for working with strings in JavaScript:
+
+### 1. `String.prototype.startsWith()`
+
+The **`startsWith`** method returns `true` if a string starts with given characters.
+
+```javascript
+const string = 'Saturday Night Live!';
+
+const startsWithSaturday = string.startsWith('Saturday');
+const startsWithLive = string.startsWith('Live');
+
+console.log(startsWithSaturday); // true
+console.log(startsWithLive); // false
+```
+
+### 2. `String.prototype.endsWith()`
+
+The **`endsWith()`** method returns `true` if string ends with given character and `false` otherwise.
+
+```javascript
+const string = 'Hello, world!';
+
+const endsWithHello = string.endsWith('Hello');
+const endsWithWorld = string.endsWith('World');
+
+console.log(endsWithHello); // false
+console.log(endsWithWorld); // false
+```
+
+### 3. `String.prototype.includes()`
+
+The **`includes()`** method performs a case-sensitive search to determine if the string contains the supplied string and returns `true` if found and `false` if the string is not found:
+
+```javascript
+const string = 'Hello, world!';
+const includesHello = string.includes('Hello');
+const includesWorld = string.includes('World');
+
+console.log(includesHello); // true
+console.log(includesWorld); // false, World! is included and not 'World'
+```
+
+### 4. `String.prototype.repeat()`
+
+The **`includes()`** method repeats a string with the supplied characters with the supplied number of times to repeat:
+
+```javascript
+const string = 'Hello, world!';
+
+const repeated = string.repeat(3);
+
+console.log(repeated); // 'Hello, world!Hello, world!Hello, world!'
+```
+
+
+## 3. Objects
+
+### 1. Destructuring assignment
+
+Destructuring assignment makes it possible to "unpack" values from objects and arrays as individual variables:
+
+```javascript
+// Array destructuring
+const myArray = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = myArray;
+
+// Object destructuring
+const userObj = { name: 'John', age: 30 };
+const { name, age } = userObj;
+// Use name and age as separate variables
+
+// Previously, this would have been:
+const name = userObj.name
+const age = userObj.age
+```
+
+### 2. Spread Operator
+
+The spread operator allows an iterable (array, object ) to be copied over to places where zero or more arguments are expected:
+
+```javascript
+// Array spread operator
+const myArray = [1, 2, 3];
+const newArray = [...myArray, 4, 5];
+
+// Object spread operator
+const userObj = { name: 'John', age: 30 };
+const newUserObj = { ...myObject, occupation: 'Developer' };
+
+console.log(newUserObj) // prints {name: 'John', age: 30, occupation: 'Developer'}
+```
+
+### 3. Rest Parameters
+
+Rest parameters provide a way of allowing a function to accept an indefinite number of arguments:
+
+```javascript
+// sum can take as many arguments
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+console.log(sum(1,3,3,5,5)) // prints 17
+```
+
+## 4. Class Syntax
+
+### 1. Classes
+
+NB: class syntax is "syntactical sugar" over prototype based inheritance. There are **no classes** in JavaScript:
+
+```javascript
+class Person {
+  constructor(name, occupation) {
+    this.name = name;
+    this.occupation = occupation;
+  }
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I'm a ${this.occupation} .`);
+  }
+}
+const person = new Person('Roseland', 'Full stack developer'); 
+person.greet() // Hello, my name is Roseland and I'm a Full stack developer.
+```
+## 5. ES Modules(ESM)
+
+### 1. Modules
+
+ESM modules provide a more flexible way of handling reusability of code:
+
+```javascript
+// person.js
+export class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// themes.js (named exports)
+export LIGHT_THEME = 'LIGHT_THEME'
+export DARK_THEME = 'DARK_THEME'
+
+// app.js
+import { Person } from './person.js';
+import { LIGHT_THEME, DARK_THEME} from './themes'
+
+console.log(LIGHT_THEME) // LIGHT_THEME
+console.log(DARK_THEME) // DARK_THEME
+
+const john = new Person('John');
+```
+
+In HTML page:
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+
+<script type="module">
+    import { Person } from './person.js';
+    const john = new Person('John');
+<script/>
+</html>
+```
+
+## 6. Asynchronous Programming
+
+### 1. Promises
+
+Promises provide a better way of handling asynchronous code over callbacks:
+
+```javascript
+// Create a Promise
+const promise = new Promise((resolve, reject) => {
+  // Do some asynchronous work
+  setTimeout(() => {
+    // If the work is successful, call resolve with the result
+    resolve('Success!');
+    // If the work fails, call reject with an error
+    // reject(new Error('Something went wrong!'));
+  }, 1000);
+});
+
+// Consume the Promise
+promise
+  .then(result => {
+    console.log(result); // 'Success!'
+  })
+  .catch(error => {
+    console.error(error); // 'Something went wrong!'
+  });
+```
+
+NB: The `fetch` API is built on promises:
+
+```javascript
+ fetch('https://dummyjson.com/posts')
+          .then((data) => data.json())
+          .then((json) => { console.log(json) });
+```
+
+
+### 2. `async/await`
+
+Note: An alternative to `.then()` when consuming `Promises` and can be used to call multiple async functions
+
+```javascript
+async function fetchData() {
+  const response = await fetch('https://dummyjson.com/products');
+  const data = await response.json();
+  return data;
+}
+
+(async() {
+ const todos = await fetchData()
+ console.log(todos)
+})()
+```
+
+### 3. Generators
+Generators allows you to define an iterator function.
+The **`gen()`** is a Generator function
+The **`yield`**  keyword is used to pause and resume a generator function.
+
+
+In the example below when each time generator.next() is called, the generator function resumes execution until the next yield statement is encountered.
+```javascript
+function*idMaker () {
+  let id = 0
+  while (true) { yield id++ }
+}
+let gen = idMaker()
+gen.next().value // → 0
+gen.next().value // → 1
+gen.next().value // → 2
+
+```
+Symbol.iterator property
+```javascript
+function*gen() { /*some code */}
+var g = gen();
+
+g[Symbol.iterator]() === g // true
+
+```
+Iterators + For..Of
+```javascript
+let fibonacci = {
+  [Symbol.iterator]() {
+    let pre = 0, cur = 1;
+    return {
+      next() {
+        [pre, cur] = [cur, pre + cur];
+        return { done: false, value: cur }
+      }
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate sequence at 1000
+  if (n > 1000) break;
+  console.log(n);
+}
+
+```
+
+## 7. Arrays
+
+### 1. ES2015 Array Methods
 
 NB: Arrays in JavaScript and most Languages are Zero indexed. Index of the array begins at zero:
 
-### Array Syntax
+#### Array Syntax
 
 ```javascript
 const names = ['Roseland', 'Naftali', 'Sebastian']
@@ -383,68 +488,46 @@ console.log(iterator.next().value); // 'b'
 console.log(iterator.next().value); // 'c'
 ```
 
-## ES6 String Methods
 
-ES6(E2015) introduced new methods for working with strings in JavaScript:
 
-### 1. `String.prototype.startsWith()`
+## 8. Functions
 
-The **`startsWith`** method returns `true` if a string starts with given characters.
+### 1. Arrow Functions
 
-```javascript
-const string = 'Saturday Night Live!';
+Arrow function expressions provide an alternative to traditional functions using the `=>` syntax.
 
-const startsWithSaturday = string.startsWith('Saturday');
-const startsWithLive = string.startsWith('Live');
-
-console.log(startsWithSaturday); // true
-console.log(startsWithLive); // false
-```
-
-### 2. `String.prototype.endsWith()`
-
-The **`endsWith()`** method returns `true` if string ends with given character and `false` otherwise.
+[Read more about arrow functions from MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ```javascript
-const string = 'Hello, world!';
+// Basic syntax
+const aFunction = () => {
+  // code to be executed
+};
 
-const endsWithHello = string.endsWith('Hello');
-const endsWithWorld = string.endsWith('World');
+// A one-liner function with an implicit return
+const add = (a, b) => a + b;
+// This is the same as:
+const add = (a, b) => {
+  return a + b
+}
 
-console.log(endsWithHello); // false
-console.log(endsWithWorld); // false
+console.log(add(2 , 6)) // prints 8
+
+// A function with one parameter
+const sayHello = name => console.log(`Hello, ${name}!`);
+console.log(sayHello("Jerry")) // prints Hello, Jerry!
+
+// A function with default parameter
+// Default parameters come last in the parameter list
+const multiplyNumbers = (a, b = 1) => a * b;
+console.log(multiply(10)) // prints 10 
 ```
 
-### 3. `String.prototype.includes()`
 
-The **`includes()`** method performs a case-sensitive search to determine if the string contains the supplied string and returns `true` if found and `false` if the string is not found:
 
-```javascript
-const string = 'Hello, world!';
-const includesHello = string.includes('Hello');
-const includesWorld = string.includes('World');
-
-console.log(includesHello); // true
-console.log(includesWorld); // false, World! is included and not 'World'
-```
-
-### 4. `String.prototype.repeat()`
-
-The **`includes()`** method repeats a string with the supplied characters with the supplied number of times to repeat:
-
-```javascript
-const string = 'Hello, world!';
-
-const repeated = string.repeat(3);
-
-console.log(repeated); // 'Hello, world!Hello, world!Hello, world!'
-```
-
-## ES2017(ES8)
+### 2.  `IIFE`
 
 ES2017 introduced powerful features. Discover some of the features introduced to JavaScript:
-
-### 1.  `IIFE`
 
 An IIFE(immediately Invoked Function Expression) is a function executed immediately after its declaration.
 
@@ -462,22 +545,7 @@ An IIFE(immediately Invoked Function Expression) is a function executed immediat
 })();
 ```
 
-### 2. `async/await`
-
-Note: An alternative to `.then()` when consuming `Promises` and can be used to call multiple async functions
-
-```javascript
-async function fetchData() {
-  const response = await fetch('https://dummyjson.com/products');
-  const data = await response.json();
-  return data;
-}
-
-(async() {
- const todos = await fetchData()
- console.log(todos)
-})()
-```
+## 9. Object methods
 
 ### 3. `Object.entries()`
 
@@ -530,7 +598,7 @@ console.log(descriptors);
 */
 ```
 
-#### Immutable object
+#### 6. Immutable object
 
 For an immutable object:
 
@@ -550,7 +618,7 @@ immutableObject.name = 'Jane';
 console.log(immutableObject.name); // 'John'
 ```
 
-### Copying properties
+### 7. Copying properties
 
 ```javascript
 const source = { name: 'John', age: 30 };
@@ -561,62 +629,14 @@ Object.defineProperties(destination, Object.getOwnPropertyDescriptors(source));
 console.log(destination); // { name: 'John', age: 30 }
 ```
 
-### Generators
-Generators allows you to define an iterator function.
-The **`gen()`** is a Generator function
-The **`yield`**  keyword is used to pause and resume a generator function.
-
-
-In the example below when each time generator.next() is called, the generator function resumes execution until the next yield statement is encountered.
-```javascript
-function*idMaker () {
-  let id = 0
-  while (true) { yield id++ }
-}
-let gen = idMaker()
-gen.next().value // → 0
-gen.next().value // → 1
-gen.next().value // → 2
-
-```
-Symbol.iterator property
-```javascript
-function*gen() { /*some code */}
-var g = gen();
-
-g[Symbol.iterator]() === g // true
-
-```
-Iterators + For..Of
-```javascript
-let fibonacci = {
-  [Symbol.iterator]() {
-    let pre = 0, cur = 1;
-    return {
-      next() {
-        [pre, cur] = [cur, pre + cur];
-        return { done: false, value: cur }
-      }
-    }
-  }
-}
-
-for (var n of fibonacci) {
-  // truncate sequence at 1000
-  if (n > 1000) break;
-  console.log(n);
-}
-
-```
-
-### Optional Chaining
+### 8. Optional Chaining
 The optional chaining **`?.`** is a safe way to access nested object properties, even if the property doesn’t exist.
 
 ```javascript
 const person = {
   name: 'Naftali',
   address: {
-    street: '243 Upptown Street',
+    street: '243 Uptown Street',
     city: 'Nairobi',
     zipcode: '10122'
   }
@@ -627,7 +647,7 @@ console.log(person.address?.country); // undefined
 console.log(person.phoneNumber?.home?.number); // undefined
 ```
 
-### Symbol
+# 10. Symbol
 They are unique and immutable data types
 A symbol is just a piece of memory in which you can store some data. Each symbol will point to a different memory location.
 **`Symbol()`** constructor are unique and immutable.
@@ -643,3 +663,5 @@ console.log(lastName); // Symbol(last name)
 ***
 
 &copy; <small>2023 | <https://naftalimurgor.com</small>> | <small><a href="https://naftalimurgor.com">Join Newsletter</a></small>
+
+</div>
